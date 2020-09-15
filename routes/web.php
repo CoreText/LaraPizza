@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\PizzasController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+
+Route::post('/pizza', [App\Http\Controllers\PizzasController::class, 'store']);
+Route::get('/pizza/create', [App\Http\Controllers\PizzasController::class, 'create']);
+Route::get('/pizza/{pizza}/edit', [App\Http\Controllers\PizzasController::class, 'edit'])->name('profile.edit');
+Route::patch('/pizza/{pizza}', [App\Http\Controllers\PizzasController::class, 'update'])->name('profile.update');
+Route::get('/pizza/{pizza}/delete', [App\Http\Controllers\PizzasController::class, 'delete']);
+Route::get('/pizza/{pizza}', [App\Http\Controllers\PizzasController::class, 'show']);

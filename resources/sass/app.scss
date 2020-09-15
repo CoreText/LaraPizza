@@ -6,3 +6,34 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.special {
+    &-title {
+        color: $black;
+    }
+    &-card-footer {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        padding-right: 0;
+        background-color: $white;
+
+        & > * + * {
+            margin-left: 5px;
+        }
+    }
+    &-link-lg {
+        font-size: 1em;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.card {
+    &-list {}
+    &-item {
+        margin-left: $grid-gutter-width / 2;
+        margin-right: $grid-gutter-width / 2;
+    }
+}

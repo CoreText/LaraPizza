@@ -37,4 +37,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * When profile created assign user_id, so the profile could be attached to user
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(static function ($user) {
+            $user->profile()->create([
+                'user_id' => $user->id,
+            ]);
+        });
+    }
+
+    public function pizzas()
+    {
+        return $this->hasMany(Pizza::class)->orderBy('created_at', 'DESC');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }
