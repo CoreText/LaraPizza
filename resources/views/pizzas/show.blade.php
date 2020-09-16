@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <h1 class="mt-4 mb-2">pizza by
                     <a class="btn btn-lg btn-link special-link-lg" href="/profile/{{ $user->id }}">
                         {{ $user->profile->username ?? $user->name }}
@@ -27,11 +27,11 @@
                             </div>
                             <div class="mb-4">
                                 You have <strong>{{ $user->pizzas->count() }}</strong> pizzas created
-                                and ... ingredients
+                                and <strong>{{ $user->ingredients->count() }}</strong> ingredients
                             </div>
 
-                            <a class="btn btn-lg btn-secondary btn-block" href="#">Add New Ingredient</a>
-                            <a class="btn btn-lg btn-primary btn-block" href="/pizza/create">Add New Pizza</a>
+                            <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
+                            <a class="btn btn-lg btn-secondary" href="#">Add New Ingredient</a>
                         </div>
                     </div>
                 @endcan
