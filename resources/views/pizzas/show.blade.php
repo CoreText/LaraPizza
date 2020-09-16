@@ -4,10 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <h1 class="mt-4 mb-2">pizza by
-                    <a class="btn btn-lg btn-link special-link-lg" href="/profile/{{ $user->id }}">
-                        {{ $user->profile->username ?? $user->name }}
-                    </a>
+
+                <h1 class="mt-4 mb-2">
+                    {{ $pizza->name }}
                     <small>({{ $pizza->updated_at->format('d/m/Y H:i:s') }})</small>
                 </h1>
 
@@ -21,7 +20,7 @@
                         @endif
 
                         <div class="mb-4 alert alert-success" role="alert">
-                            {{ __('You are logged in!') }}
+                            {{ __('You are logged in!') }} as <strong>{{ $user->profile->username ?? $user->name }}</strong>
                         </div>
                         <div class="mb-4">
                             You have <strong>{{ $user->pizzas->count() }}</strong> pizzas created

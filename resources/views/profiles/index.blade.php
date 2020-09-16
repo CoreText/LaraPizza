@@ -17,7 +17,7 @@
                     @endif
 
                     <div class="mb-4 alert alert-success" role="alert">
-                        {{ __('You are logged in!') }}
+                        {{ __('You are logged in!') }} as <strong>{{ $user->profile->username ?? $user->name }}</strong>
                     </div>
                     <div class="mb-4">
                         You have <strong>{{ $user->pizzas->count() }}</strong> pizzas created
