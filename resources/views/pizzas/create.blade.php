@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                     <input id="price" type="text"
                                            class="form-control @error('price') is-invalid @enderror"
-                                           name="price" value="{{ old('price') }}" autocomplete="price">
+                                           name="price" value="{{ old('price') ?? 0 }}" autocomplete="price">
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -41,8 +41,53 @@
                             </div>
 
 
+{{--                            <div class="mt-4">Ingredients to include</div>--}}
+{{--                            <table class="table">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th scope="col">№</th>--}}
+{{--                                    <th scope="col">Ingredient</th>--}}
+{{--                                    <th scope="col">Actions</th>--}}
+{{--                                </tr>--}}
+{{--                                </thead>--}}
+{{--                                <tbody>--}}
+{{--                                <tr>--}}
+{{--                                    <th scope="row">1</th>--}}
+{{--                                    <td>--}}
 
-                            <div class="form-group row mb-0">
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Ingredients to include</label>
+                                @if($ingredients->count())
+                                    <select class="selectpicker" multiple data-live-search="true" name="ingredients[]">
+                                        @foreach($ingredients as $ingredient)
+                                            <option value="{{ $ingredient->id }}">{{ $ingredient->name }} ({{ $ingredient->price }} EUR)</option>
+                                        @endforeach
+                                    </select>
+
+                                @else
+                                    No ingredients to include.
+                                    <a class="" href="/ingredient/create">&nbsp;Create new ingredient</a>
+                                @endif
+
+                                @error('ingredients')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+{{--                                    </td>--}}
+{{--                                    <td>--}}
+{{--                                        <a class="btn btn-sm btn-secondary" href="#">New</a>--}}
+{{--                                        <a class="btn btn-sm btn-danger" href="#">Remove</a>--}}
+{{--                                    </td>--}}
+{{--                                </tr>--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+
+                            </div>
+
+                            <div class="form-group row mt-4 mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-lg btn-primary">
                                         Create New Pizza

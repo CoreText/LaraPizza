@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use App\Models\Pizza;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class PizzasController extends Controller
 {
@@ -22,19 +22,46 @@ class PizzasController extends Controller
 
     public function create()
     {
-        return view('pizzas.create');
+        $user = \auth()->user();
+        $ingredients = DB::table('ingredients')->get(); // there was not enough time for me to create 'many to many'
+        return view('pizzas.create', compact('user', 'ingredients'));
     }
 
     public function store()
     {
-        $data = \request()->validate([
-            'description' => '',
+        $currentUser = \auth()->user();
+        $request = \request();
+
+        $data = $request->validate([
             'name' => 'required',
-            'price' => 'required',
+            'price' => '',
+            'ingredients' => 'required',
         ]);
 
-        $currentUser = \auth()->user();
+        //dd($data);
 
+
+        $inputIngredients = $request->get('ingredients');
+        //dd($inputIngredients);
+
+        if (is_array($inputIngredients)) {
+            $ingredients = array_map(function ($ingredientId) {
+                $item_id = (int) filter_var($ingredientId, FILTER_SANITIZE_NUMBER_INT);
+
+                $item = Ingredient::find($item_id);
+                return $item->getAttributes();
+            }, $inputIngredients);
+
+            $data['price'] = array_reduce($ingredients, static function ($total, $current) {
+                $total += $current['price'];
+                return $total;
+            },  $data['price']);
+            $data['ingredients'] = json_encode($ingredients);
+            //dd($ingredients);
+        }
+
+
+        //dd($data);
         $currentUser->pizzas()->create($data);
         return \redirect('/profile/' . $currentUser->id);
     }
@@ -47,12 +74,13 @@ class PizzasController extends Controller
 
     public function edit(Pizza $pizza)
     {
-        $currentUser = \auth()->user();
-        if (is_null($currentUser)) {
-            return \redirect('/login');
-        }
+//        $user = \auth()->user();
+//        if (is_null($user)) {
+//            return \redirect('/login');
+//        }
+        $ingredients = DB::table('ingredients')->get(); // there was not enough time for me to create 'many to many'
 
-        return view('pizzas.edit', compact('pizza'));
+        return view('pizzas.edit', compact('pizza', /*'user'*/ 'ingredients'));
     }
 
     public function update(Pizza $pizza)
@@ -62,10 +90,30 @@ class PizzasController extends Controller
             return \redirect('/login');
         }
 
-        $data = \request()->validate([
-            'name' => '',
+        $request = \request();
+
+        $data = $request->validate([
+            'name' => 'required',
             'price' => '',
+            'ingredients' => 'required',
         ]);
+
+        $inputIngredients = $request->get('ingredients');
+
+        if (is_array($inputIngredients)) {
+            $ingredients = array_map(function ($ingredientId) {
+                $item_id = (int) filter_var($ingredientId, FILTER_SANITIZE_NUMBER_INT);
+
+                $item = Ingredient::find($item_id);
+                return $item->getAttributes();
+            }, $inputIngredients);
+
+            $data['price'] = array_reduce($ingredients, static function ($total, $current) {
+                $total += $current['price'];
+                return $total;
+            }, $data['price']);
+            $data['ingredients'] = json_encode($ingredients);
+        }
 
         $pizza->update($data);
 
@@ -78,4 +126,6 @@ class PizzasController extends Controller
         Pizza::find($pizza->id)->delete();
         return \redirect('/profile/' . $currentUser->id);
     }
+
+
 }

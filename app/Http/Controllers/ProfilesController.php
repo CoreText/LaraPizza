@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ProfilesController extends Controller
 {
@@ -16,13 +17,8 @@ class ProfilesController extends Controller
      */
     public function index(User $user)
     {
-        return view('profiles.index', compact('user'));
+        $users = DB::table('users')->get();
+        return view('profiles.index', compact('user', 'users'));
     }
 
-//    public function edit(User $user)
-//    {
-//        dd($user);
-//        $this->authorize('update', $user->profile);
-//        return view('profiles.edit', compact('user'));
-//    }
 }

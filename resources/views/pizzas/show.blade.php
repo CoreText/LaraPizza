@@ -43,12 +43,31 @@
                 <h1>{{ $pizza->name }}</h1>
             </header>
 
-            <p>Lorem ipsum dolor sit: {{ $pizza->price }}</p>
+            <p>
+            <strong>
+                @if($pizza->price === "0.00")
+                    No ingredient found. <a class="btn-link" href="/ingredient/create">Create some</a>
+                @else
+                    Price: <span class="special-price">{{ number_format(((float)$pizza->price * 15) / 10, 2) }}</span> (EUR)
+                @endif
+            </strong>
+
+            <p>Ingredients:</p>
+            @if(is_null($pizza->name))
+                <div>Without ingredients.</div>
+            @else
+                <ol class="list-group special-list">
+                    @foreach(json_decode($pizza->ingredients) as $ingredient)
+                        <li class="">{{ $ingredient->name }}</li>
+                    @endforeach
+                </ol>
+            @endif
+            </p>
 
             <footer class="special-card-footer">
                 <a class="btn btn-lg btn-primary mr-auto" href="#">Bake The Pizza!</a>
                 @can('update', $user->profile)
-                    <a class="btn btn-lg btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Update</a>
+                    <a class="btn btn-lg btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Edit</a>
                     <a class="btn btn-lg btn-danger" href="/pizza/{{ $pizza->id }}/delete">Delete</a>
                 @endcan
             </footer>

@@ -7,6 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import "node_modules/bootstrap-select/sass/bootstrap-select.scss";
 
 .special {
     &-title {
@@ -28,6 +29,13 @@
         padding-left: 0;
         padding-right: 0;
     }
+    &-price {
+        color: $red
+    }
+    &-list {
+        //list-style: none;
+        padding-left: 15px;
+    }
 }
 
 .card {
@@ -36,4 +44,13 @@
         margin-left: $grid-gutter-width / 2;
         margin-right: $grid-gutter-width / 2;
     }
+}
+
+.list-group-item.current-user.disabled,
+.list-group-item.current-user:disabled {
+    background-color: $body-bg !important;
+}
+
+.table tbody {
+    background-color: $white;
 }
