@@ -40,22 +40,6 @@
                                 </div>
                             </div>
 
-
-{{--                            <div class="mt-4">Ingredients to include</div>--}}
-{{--                            <table class="table">--}}
-{{--                                <thead>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="col">№</th>--}}
-{{--                                    <th scope="col">Ingredient</th>--}}
-{{--                                    <th scope="col">Actions</th>--}}
-{{--                                </tr>--}}
-{{--                                </thead>--}}
-{{--                                <tbody>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">1</th>--}}
-{{--                                    <td>--}}
-
-
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Ingredients to include</label>
                                 @if($ingredients->count())
@@ -75,16 +59,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <a class="btn btn-sm btn-secondary" href="#">New</a>--}}
-{{--                                        <a class="btn btn-sm btn-danger" href="#">Remove</a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                </tbody>--}}
-{{--                            </table>--}}
-
                             </div>
 
                             <div class="form-group row mt-4 mb-0">

@@ -23,7 +23,6 @@ class PizzasController extends Controller
     public function show(Pizza $pizza)
     {
         $user = \auth()->user();
-        //$this->authorize('update', $user);
         return view('pizzas.show', compact('pizza', 'user'));
     }
 
@@ -116,7 +115,7 @@ class PizzasController extends Controller
 
         $pizza->update($data);
 
-        return \redirect("/pizza/{$pizza->id}");
+        return \redirect('/profile/' . $currentUser->id);
     }
 
     public function delete(Pizza $pizza)
