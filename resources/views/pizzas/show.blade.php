@@ -20,7 +20,10 @@
                         @endif
 
                         <div class="mb-4 alert alert-success" role="alert">
-                            {{ __('You are logged in!') }} as <strong>{{ $user->profile->username ?? $user->name }}</strong>
+                            {{ __('You are logged in!') }} as
+                            <a class="btn-link" href="/profile/{{ $user->id }}">
+                                <strong>{{ $user->profile->username ?? $user->name }}</strong>
+                            </a>
                         </div>
                         <div class="mb-4">
                             You have <strong>{{ $user->pizzas->count() }}</strong> pizzas created
