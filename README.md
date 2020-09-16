@@ -1,4 +1,7 @@
-# Install
+First things first, I wanted to use sqlite, but there was some issues, so I uploaded mysql dump `larapizza.sql` just in case.
 
-The dump is in the root of the project. I wanted to use sqlite, but there was some issues, so I uploaded the `larapizza.sql` just in case if Dashboard won't appear after install.
-Need to create database `larapizza` then migrate it with `php artisan migrate` and then `php artisan serve`.
+# Install
+- composer install, npm intall
+- create database `larapizza` 
+- migrate it with `php artisan migrate`
+- `php artisan serve`
