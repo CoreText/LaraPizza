@@ -40,11 +40,7 @@ class PizzasController extends Controller
             'ingredients' => 'required',
         ]);
 
-        //dd($data);
-
-
         $inputIngredients = $request->get('ingredients');
-        //dd($inputIngredients);
 
         if (is_array($inputIngredients)) {
             $ingredients = array_map(function ($ingredientId) {
@@ -59,11 +55,8 @@ class PizzasController extends Controller
                 return $total;
             },  $data['price']);
             $data['ingredients'] = json_encode($ingredients);
-            //dd($ingredients);
         }
 
-
-        //dd($data);
         $currentUser->pizzas()->create($data);
         return \redirect('/profile/' . $currentUser->id);
     }
@@ -71,16 +64,12 @@ class PizzasController extends Controller
     public function show(Pizza $pizza)
     {
         $user = \auth()->user();
+        //$this->authorize('update', $user);
         return view('pizzas.show', compact('pizza', 'user'));
     }
 
     public function edit(Pizza $pizza)
     {
-//        $user = \auth()->user();
-//        if (is_null($user)) {
-//            return \redirect('/login');
-//        }
-
         // @TODO change to `many-to-many`
         $ingredients = DB::table('ingredients')->get();
 

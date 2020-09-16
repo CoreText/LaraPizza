@@ -11,30 +11,28 @@
                     <small>({{ $pizza->updated_at->format('d/m/Y H:i:s') }})</small>
                 </h1>
 
-
-                @can('update', $user->profile)
-                    <div class="card mt-4">
-                        <div class="card-header">{{ __('Dashboard') }}</div>
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-
-                            <div class="mb-4 alert alert-success" role="alert">
-                                {{ __('You are logged in!') }}
+                <div class="card mt-4">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
                             </div>
-                            <div class="mb-4">
-                                You have <strong>{{ $user->pizzas->count() }}</strong> pizzas created
-                                and <strong>{{ $user->ingredients->count() }}</strong> ingredients
-                            </div>
+                        @endif
 
-                            <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
-                            <a class="btn btn-lg btn-secondary" href="#">Add New Ingredient</a>
+                        <div class="mb-4 alert alert-success" role="alert">
+                            {{ __('You are logged in!') }}
                         </div>
+                        <div class="mb-4">
+                            You have <strong>{{ $user->pizzas->count() }}</strong> pizzas created
+                            and <strong>{{ $user->ingredients->count() }}</strong> ingredients
+                        </div>
+
+                        <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
+                        <a class="btn btn-lg btn-secondary" href="#">Add New Ingredient</a>
                     </div>
-                @endcan
+                </div>
+
             </div>
         </div>
 
@@ -66,7 +64,7 @@
 
             <footer class="special-card-footer">
                 <a class="btn btn-lg btn-primary mr-auto" href="#">Bake The Pizza!</a>
-                @can('update', $user->profile)
+                @can('edit', $user->profile)
                     <a class="btn btn-lg btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Edit</a>
                     <a class="btn btn-lg btn-danger" href="/pizza/{{ $pizza->id }}/delete">Delete</a>
                 @endcan
