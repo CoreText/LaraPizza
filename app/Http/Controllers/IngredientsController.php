@@ -28,7 +28,7 @@ class IngredientsController extends Controller
     public function store()
     {
         $data = \request()->validate([
-            'name' => 'required',
+            'name' => 'required|unique:ingredients',
             'price' => 'required',
         ]);
 
@@ -58,7 +58,7 @@ class IngredientsController extends Controller
         $currentUser = \auth()->user();
 
         $data = \request()->validate([
-            'name' => 'required',
+            'name' => 'required|unique:ingredients',
             'price' => 'required',
         ]);
 
