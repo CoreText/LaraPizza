@@ -23,7 +23,9 @@ class PizzasController extends Controller
     public function create()
     {
         $user = \auth()->user();
-        $ingredients = DB::table('ingredients')->get(); // there was not enough time for me to create 'many to many'
+
+        // @TODO change to `many-to-many`
+        $ingredients = DB::table('ingredients')->get();
         return view('pizzas.create', compact('user', 'ingredients'));
     }
 
@@ -78,7 +80,9 @@ class PizzasController extends Controller
 //        if (is_null($user)) {
 //            return \redirect('/login');
 //        }
-        $ingredients = DB::table('ingredients')->get(); // there was not enough time for me to create 'many to many'
+
+        // @TODO change to `many-to-many`
+        $ingredients = DB::table('ingredients')->get();
 
         return view('pizzas.edit', compact('pizza', /*'user'*/ 'ingredients'));
     }
