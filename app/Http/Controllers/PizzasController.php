@@ -20,11 +20,19 @@ class PizzasController extends Controller
         return \redirect('/profile/' . $currentUser->id);
     }
 
+    public function show(Pizza $pizza)
+    {
+        $user = \auth()->user();
+        //$this->authorize('update', $user);
+        return view('pizzas.show', compact('pizza', 'user'));
+    }
+
     public function create()
     {
         $user = \auth()->user();
 
         // @TODO change to `many-to-many`
+        //$ingredients = Ingredient::with('user')->get();
         $ingredients = DB::table('ingredients')->get();
         return view('pizzas.create', compact('user', 'ingredients'));
     }
@@ -40,17 +48,19 @@ class PizzasController extends Controller
             'ingredients' => 'required',
         ]);
 
+        $data['total_price'] = '0.00';
+
         $inputIngredients = $request->get('ingredients');
 
         if (is_array($inputIngredients)) {
-            $ingredients = array_map(function ($ingredientId) {
+            $ingredients = array_map(static function ($ingredientId) {
                 $item_id = (int) filter_var($ingredientId, FILTER_SANITIZE_NUMBER_INT);
 
                 $item = Ingredient::find($item_id);
                 return $item->getAttributes();
             }, $inputIngredients);
 
-            $data['price'] = array_reduce($ingredients, static function ($total, $current) {
+            $data['total_price'] = array_reduce($ingredients, static function ($total, $current) {
                 $total += $current['price'];
                 return $total;
             },  $data['price']);
@@ -61,19 +71,13 @@ class PizzasController extends Controller
         return \redirect('/profile/' . $currentUser->id);
     }
 
-    public function show(Pizza $pizza)
-    {
-        $user = \auth()->user();
-        //$this->authorize('update', $user);
-        return view('pizzas.show', compact('pizza', 'user'));
-    }
-
     public function edit(Pizza $pizza)
     {
         // @TODO change to `many-to-many`
+        //$ingredients = Ingredient::with('user')->get();
         $ingredients = DB::table('ingredients')->get();
 
-        return view('pizzas.edit', compact('pizza', /*'user'*/ 'ingredients'));
+        return view('pizzas.edit', compact('pizza', 'ingredients'));
     }
 
     public function update(Pizza $pizza)
@@ -91,6 +95,8 @@ class PizzasController extends Controller
             'ingredients' => 'required',
         ]);
 
+        $data['total_price'] = '0.00';
+
         $inputIngredients = $request->get('ingredients');
 
         if (is_array($inputIngredients)) {
@@ -101,7 +107,7 @@ class PizzasController extends Controller
                 return $item->getAttributes();
             }, $inputIngredients);
 
-            $data['price'] = array_reduce($ingredients, static function ($total, $current) {
+            $data['total_price'] = array_reduce($ingredients, static function ($total, $current) {
                 $total += $current['price'];
                 return $total;
             }, $data['price']);

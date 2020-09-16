@@ -23,5 +23,9 @@ class Ingredient extends Model
         );
     }
 
+    public function pizza()
+    {
+        return $this->belongsToMany(Pizza::class);
+    }
 
 }

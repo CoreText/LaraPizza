@@ -48,10 +48,10 @@
 
                             <p class="card-text">
                                 <strong>
-                                @if($pizza->price === "0.00")
+                                @if($pizza->total_price === "0.00")
                                     No ingredient found. <a class="btn-link" href="/ingredient/create">Create some</a>
                                 @else
-                                    Price: <span class="special-price">{{ number_format(((float)$pizza->price * 15) / 10, 2) }}</span> (EUR)
+                                    Price: <span class="special-price">{{ number_format(((float)$pizza->total_price * 15) / 10, 2) }}</span> (EUR)
                                 @endif
                                 </strong>
 
@@ -130,7 +130,6 @@
             @endforeach
         </ul>
     </div>
-
 
 </div>
 @endsection

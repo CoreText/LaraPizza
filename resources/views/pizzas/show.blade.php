@@ -31,7 +31,7 @@
                         </div>
 
                         <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
-                        <a class="btn btn-lg btn-secondary" href="#">Add New Ingredient</a>
+                        <a class="btn btn-lg btn-secondary" href="/ingredient/create">Add New Ingredient</a>
                     </div>
                 </div>
 
@@ -45,10 +45,10 @@
 
             <p>
             <strong>
-                @if($pizza->price === "0.00")
+                @if($pizza->total_price === "0.00")
                     No ingredient found. <a class="btn-link" href="/ingredient/create">Create some</a>
                 @else
-                    Price: <span class="special-price">{{ number_format(((float)$pizza->price * 15) / 10, 2) }}</span> (EUR)
+                    Price: <span class="special-price">{{ number_format(((float)$pizza->total_price * 15) / 10, 2) }}</span> (EUR)
                 @endif
             </strong>
 
@@ -66,10 +66,12 @@
 
             <footer class="special-card-footer">
                 <a class="btn btn-lg btn-primary mr-auto" href="#">Bake The Pizza!</a>
-                @can('edit', $user->profile)
+                {{--
+                @can('update', $user->profile)
                     <a class="btn btn-lg btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Edit</a>
                     <a class="btn btn-lg btn-danger" href="/pizza/{{ $pizza->id }}/delete">Delete</a>
                 @endcan
+                --}}
             </footer>
         </article>
     </div>

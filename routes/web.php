@@ -36,7 +36,3 @@ Route::patch('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsContro
 Route::get('/ingredient/{ingredient}/delete', [App\Http\Controllers\IngredientsController::class, 'delete']);
 Route::get('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'show']);
 
-
-Route::get('/fix', function () {
-    //$user = User::
-});

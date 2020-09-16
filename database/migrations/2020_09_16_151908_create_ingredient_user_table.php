@@ -15,8 +15,19 @@ class CreateIngredientUserTable extends Migration
     {
         Schema::create('ingredient_user', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('ingredient_id');
-            $table->bigInteger('user_id');
+
+            $table->foreignId('ingredient_id')
+                ->references('id')
+                ->on('ingredients')
+                //->constrained()
+            ;
+
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                //->constrained()
+            ;
+
             //$table->timestamps();
         });
     }

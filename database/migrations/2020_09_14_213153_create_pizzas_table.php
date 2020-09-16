@@ -18,6 +18,7 @@ class CreatePizzasTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('price')->nullable();
+            $table->string('total_price')->nullable();
             $table->text('ingredients')->nullable();
             $table->timestamps();
 

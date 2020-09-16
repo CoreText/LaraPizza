@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ingredient;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\ {
+    Ingredient,
+    User
+};
 
 class IngredientsController extends Controller
 {
@@ -55,9 +56,6 @@ class IngredientsController extends Controller
     public function update(Ingredient $ingredient)
     {
         $currentUser = \auth()->user();
-        if (is_null($currentUser)) {
-            return \redirect('/login');
-        }
 
         $data = \request()->validate([
             'name' => 'required',
@@ -66,7 +64,7 @@ class IngredientsController extends Controller
 
         $ingredient->update($data);
 
-        return \redirect("/ingredient/{$ingredient->id}");
+        return \redirect('/profile/' . $currentUser->id);
     }
 
     public function delete(Ingredient $ingredient)

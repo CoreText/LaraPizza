@@ -31,9 +31,9 @@
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Initial Price</label>
                                 <div class="col-md-6">
-                                    <input id="price" type="text"
+                                    <input id="price" type="number" min="0" step="any"
                                            class="form-control @error('price') is-invalid @enderror"
-                                           name="price" value="{{ old('price') ?? 0 }}"
+                                           name="price" value="{{ old('price') ?? $pizza->price }}"
                                            autocomplete="price">
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
