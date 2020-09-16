@@ -45,9 +45,9 @@
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Ingredients to include</label>
-                                @if($user->ingredients->count())
+                                @if($ingredients->count())
                                     <select class="selectpicker" multiple data-live-search="true" name="ingredients[]">
-                                        @foreach($user->ingredients as $ingredient)
+                                        @foreach($ingredients as $ingredient)
                                             <option value="{{ $ingredient->id }}" {{ old('ingredients[]') }}>
                                                 {{ $ingredient->name }} ({{ $ingredient->price }} EUR)
                                             </option>

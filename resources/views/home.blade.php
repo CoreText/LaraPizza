@@ -3,10 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1 class="mt-4 mb-2 text-center">catalog by {{ $user->profile->username ?? $user->name }}</h1>
-
-            {{-- dd($user->profile) --}}
+        <div class="col-md-12">
+            <h1 class="mt-4 mb-2">catalog by {{ $user->profile->username ?? $user->name }}</h1>
 
             @can('update', $user->profile)
                 <div class="card mt-4">
@@ -27,8 +25,8 @@
                             and ... ingredients
                         </div>
 
-                        <a class="btn btn-lg btn-secondary btn-block" href="#">Add New Ingredient</a>
-                        <a class="btn btn-lg btn-primary btn-block" href="/pizza/create">Add New Pizza</a>
+                        <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
+                        <a class="btn btn-lg btn-secondary " href="#">Add New Ingredient</a>
                     </div>
                 </div>
             @endcan
