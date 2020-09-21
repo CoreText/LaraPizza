@@ -83,10 +83,6 @@ class PizzasController extends Controller
     public function update(Pizza $pizza)
     {
         $currentUser = \auth()->user();
-        if (is_null($currentUser)) {
-            return \redirect('/login');
-        }
-
         $request = \request();
 
         $data = $request->validate([
