@@ -33,7 +33,6 @@ class PizzasController extends Controller
     {
         $user = \auth()->user();
 
-        // @TODO change to `many-to-many`
         //$ingredients = Ingredient::with('user')->get();
         $ingredients = DB::table('ingredients')->get();
         return view('pizzas.create', compact('user', 'ingredients'));
@@ -75,7 +74,6 @@ class PizzasController extends Controller
 
     public function edit(Pizza $pizza)
     {
-        // @TODO change to `many-to-many`
         //$ingredients = Ingredient::with('user')->get();
         $ingredients = DB::table('ingredients')->get();
 
