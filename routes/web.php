@@ -32,7 +32,7 @@ Route::get('/pizza/{pizza}', [App\Http\Controllers\PizzasController::class, 'sho
 Route::post('/ingredient', [App\Http\Controllers\IngredientsController::class, 'store']);
 Route::get('/ingredient/create', [App\Http\Controllers\IngredientsController::class, 'create']);
 Route::get('/ingredient/{ingredient}/edit', [App\Http\Controllers\IngredientsController::class, 'edit'])->name('pizza.edit');
-Route::patch('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('pizza.update');
+Route::post('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('pizza.update');
 Route::get('/ingredient/{ingredient}/delete', [App\Http\Controllers\IngredientsController::class, 'delete']);
 Route::get('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'show']);
 
