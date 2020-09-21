@@ -1,7 +1,7 @@
-First things first, I wanted to use sqlite, but there was some issues, so I uploaded mysql dump `larapizza.sql` just in case.
+Mysql dump `larapizza.sql` just in case.
 
 # Install
-- composer install, npm intall
+- composer install, npm install
 - create database `larapizza` 
-- migrate it with `php artisan migrate`
+- `php artisan migrate`
 - `php artisan serve`

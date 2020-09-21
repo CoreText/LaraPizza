@@ -38,6 +38,6 @@ Route::get('/pizzas/{pizza}/delete', [App\Http\Controllers\PizzasController::cla
 Route::post('/ingredients', [App\Http\Controllers\IngredientsController::class, 'store']);
 Route::get('/ingredients/create', [App\Http\Controllers\IngredientsController::class, 'create']);
 Route::get('/ingredients/{ingredient}/edit', [App\Http\Controllers\IngredientsController::class, 'edit'])->name('ingredient.edit');
-Route::patch('/ingredients/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredient.update');
+Route::put('/ingredients/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredient.update');
 Route::get('/ingredients/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'show']);
 Route::get('/ingredients/{ingredient}/delete', [App\Http\Controllers\IngredientsController::class, 'delete']);
