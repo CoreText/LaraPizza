@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profiles/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 
 // Pizzas
-Route::post('/pizza', [App\Http\Controllers\PizzasController::class, 'store']);
+Route::post('/pizzas', [App\Http\Controllers\PizzasController::class, 'store']);
 Route::get('/pizzas/create', [App\Http\Controllers\PizzasController::class, 'create']);
 Route::get('/pizzas/{pizza}/edit', [App\Http\Controllers\PizzasController::class, 'edit'])->name('pizza.edit');
 Route::patch('/pizzas/{pizza}', [App\Http\Controllers\PizzasController::class, 'update'])->name('pizza.update');
@@ -35,7 +35,7 @@ Route::get('/pizzas/{pizza}', [App\Http\Controllers\PizzasController::class, 'sh
 Route::get('/pizzas/{pizza}/delete', [App\Http\Controllers\PizzasController::class, 'delete']);
 
 // Ingredients
-Route::post('/ingredient', [App\Http\Controllers\IngredientsController::class, 'store']);
+Route::post('/ingredients', [App\Http\Controllers\IngredientsController::class, 'store']);
 Route::get('/ingredients/create', [App\Http\Controllers\IngredientsController::class, 'create']);
 Route::get('/ingredients/{ingredient}/edit', [App\Http\Controllers\IngredientsController::class, 'edit'])->name('ingredient.edit');
 Route::patch('/ingredients/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredient.update');
