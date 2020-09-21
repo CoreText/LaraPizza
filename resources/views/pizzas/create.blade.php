@@ -8,7 +8,7 @@
                     <div class="card-header">Create New Pizza</div>
 
                     <div class="card-body">
-                        <form method="POST" action="/pizza">
+                        <form method="POST" action="/pizzas">
                             @csrf
 
                             <div class="form-group row">

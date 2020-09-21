@@ -8,7 +8,7 @@
                     <div class="card-header">New Custom Ingredient</div>
 
                     <div class="card-body">
-                        <form method="POST" action="/ingredient">
+                        <form method="POST" action="/ingredients">
                             @csrf
 
                             <div class="form-group row">
