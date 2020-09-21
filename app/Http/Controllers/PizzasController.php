@@ -20,7 +20,7 @@ class PizzasController extends Controller
     public function index(User $user)
     {
         $currentUser = \auth()->user();
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
     public function show(Pizza $pizza)
@@ -69,7 +69,7 @@ class PizzasController extends Controller
         }
 
         $currentUser->pizzas()->create($data);
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
     public function edit(Pizza $pizza)
@@ -112,14 +112,14 @@ class PizzasController extends Controller
 
         $pizza->update($data);
 
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
     public function delete(Pizza $pizza)
     {
         $currentUser = \auth()->user();
         Pizza::find($pizza->id)->delete();
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
 

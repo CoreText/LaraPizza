@@ -25,8 +25,8 @@
                             and <strong>{{ $user->ingredients->count() }}</strong> ingredients
                         </div>
 
-                        <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
-                        <a class="btn btn-lg btn-secondary" href="/ingredient/create">Add New Ingredient</a>
+                        <a class="btn btn-lg btn-primary" href="/pizzas/create">Add New Pizza</a>
+                        <a class="btn btn-lg btn-secondary" href="/ingredients/create">Add New Ingredient</a>
                     </div>
                 </div>
             @endcan
@@ -39,7 +39,7 @@
             @foreach($user->pizzas as $pizza)
                 <article class="col col-sm-4 p-0 mt-4">
                     <div class="card card-item">
-                        <a href="/pizza/{{ $pizza->id }}">
+                        <a href="/pizzas/{{ $pizza->id }}">
                             <img class="card-img-top" alt=""
                                  src="https://doncarlone.com.br/site/wp-content/uploads/2017/06/dia-da-pizza.jpg">
                         </a>
@@ -49,7 +49,7 @@
                             <p class="card-text">
                                 <strong>
                                 @if($pizza->total_price === "0.00")
-                                    No ingredient found. <a class="btn-link" href="/ingredient/create">Create some</a>
+                                    No ingredient found. <a class="btn-link" href="/ingredients/create">Create some</a>
                                 @else
                                     Price: <span class="special-price">{{ $pizza->total_price }}</span> (EUR)
                                 @endif
@@ -71,8 +71,8 @@
                                 <a class="btn btn-sm btn-primary mr-auto" href="#">Bake The Pizza!</a>
 
                                 @can('update', $user->profile)
-                                    <a class="btn btn-sm btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="/pizza/{{ $pizza->id }}/delete">Delete</a>
+                                    <a class="btn btn-sm btn-secondary" href="/pizzas/{{ $pizza->id }}/edit">Edit</a>
+                                    <a class="btn btn-sm btn-danger" href="/pizzas/{{ $pizza->id }}/delete">Delete</a>
                                 @endcan
                             </div>
                         </div>
@@ -106,8 +106,8 @@
                         <td>{{ $ingredient->price }}</td>
                         @can('update', $user->profile)
                             <td>
-                                <a class="btn btn-sm btn-secondary" href="/ingredient/{{ $ingredient->id }}/edit">Edit</a>
-                                <a class="btn btn-sm btn-danger" href="/ingredient/{{ $ingredient->id }}/delete">Delete</a>
+                                <a class="btn btn-sm btn-secondary" href="/ingredients/{{ $ingredient->id }}/edit">Edit</a>
+                                <a class="btn btn-sm btn-danger" href="/ingredients/{{ $ingredient->id }}/delete">Delete</a>
                             </td>
                         @endcan
                     </tr>
@@ -125,7 +125,7 @@
         <ul class="list-group">
             @foreach($users as $u)
                 <li class="list-group-item @if($u->id === $user->id) disabled current-user @endif" @if($u->id === $user->id)  aria-disabled="true" @endif >
-                    <a href="/profile/{{ $u->id }}">{{ $u->profile->username ?? $u->name }}</a>
+                    <a href="/profiles/{{ $u->id }}">{{ $u->profile->username ?? $u->name }}</a>
                 </li>
             @endforeach
         </ul>

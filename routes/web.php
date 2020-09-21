@@ -24,20 +24,20 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Profiles
-Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+Route::get('/profiles/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 
 // Pizzas
 Route::post('/pizza', [App\Http\Controllers\PizzasController::class, 'store']);
-Route::get('/pizza/create', [App\Http\Controllers\PizzasController::class, 'create']);
-Route::get('/pizza/{pizza}/edit', [App\Http\Controllers\PizzasController::class, 'edit'])->name('pizza.edit');
-Route::patch('/pizza/{pizza}', [App\Http\Controllers\PizzasController::class, 'update'])->name('pizza.update');
-Route::get('/pizza/{pizza}', [App\Http\Controllers\PizzasController::class, 'show']);
-Route::get('/pizza/{pizza}/delete', [App\Http\Controllers\PizzasController::class, 'delete']);
+Route::get('/pizzas/create', [App\Http\Controllers\PizzasController::class, 'create']);
+Route::get('/pizzas/{pizza}/edit', [App\Http\Controllers\PizzasController::class, 'edit'])->name('pizza.edit');
+Route::patch('/pizzas/{pizza}', [App\Http\Controllers\PizzasController::class, 'update'])->name('pizza.update');
+Route::get('/pizzas/{pizza}', [App\Http\Controllers\PizzasController::class, 'show']);
+Route::get('/pizzas/{pizza}/delete', [App\Http\Controllers\PizzasController::class, 'delete']);
 
 // Ingredients
 Route::post('/ingredient', [App\Http\Controllers\IngredientsController::class, 'store']);
-Route::get('/ingredient/create', [App\Http\Controllers\IngredientsController::class, 'create']);
-Route::get('/ingredient/{ingredient}/edit', [App\Http\Controllers\IngredientsController::class, 'edit'])->name('ingredient.edit');
-Route::patch('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredient.update');
-Route::get('/ingredient/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'show']);
-Route::get('/ingredient/{ingredient}/delete', [App\Http\Controllers\IngredientsController::class, 'delete']);
+Route::get('/ingredients/create', [App\Http\Controllers\IngredientsController::class, 'create']);
+Route::get('/ingredients/{ingredient}/edit', [App\Http\Controllers\IngredientsController::class, 'edit'])->name('ingredient.edit');
+Route::patch('/ingredients/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'update'])->name('ingredient.update');
+Route::get('/ingredients/{ingredient}', [App\Http\Controllers\IngredientsController::class, 'show']);
+Route::get('/ingredients/{ingredient}/delete', [App\Http\Controllers\IngredientsController::class, 'delete']);

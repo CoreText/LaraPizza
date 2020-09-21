@@ -8,7 +8,7 @@
                     <div class="card-header">Update The Pizza</div>
 
                     <div class="card-body">
-                        <form method="POST" action="/pizza/{{ $pizza->id }}">
+                        <form method="POST" action="/pizzas/{{ $pizza->id }}">
                             @csrf
                             @method('PATCH')
 
@@ -55,7 +55,7 @@
                                     </select>
                                 @else
                                     No ingredients to include.
-                                    <a class="" href="/ingredient/create">&nbsp;Create new ingredient</a>
+                                    <a class="" href="/ingredients/create">&nbsp;Create new ingredient</a>
                                 @endif
 
                                 @error('ingredients')

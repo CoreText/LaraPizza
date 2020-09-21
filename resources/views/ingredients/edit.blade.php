@@ -8,7 +8,7 @@
                     <div class="card-header">Update The Ingredient</div>
 
                     <div class="card-body">
-                        <form method="POST" action="/ingredient/{{ $ingredient->id }}">
+                        <form method="POST" action="/ingredients/{{ $ingredient->id }}">
                             @csrf
                             @method('PATCH')
 

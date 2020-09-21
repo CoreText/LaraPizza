@@ -51,7 +51,7 @@
 
                                 @else
                                     No ingredients to include.
-                                    <a class="" href="/ingredient/create">&nbsp;Create new ingredient</a>
+                                    <a class="" href="/ingredients/create">&nbsp;Create new ingredient</a>
                                 @endif
 
                                 @error('ingredients')

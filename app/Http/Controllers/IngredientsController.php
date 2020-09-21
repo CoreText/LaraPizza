@@ -17,7 +17,7 @@ class IngredientsController extends Controller
     public function index(User $user)
     {
         $currentUser = \auth()->user();
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
     public function create()
@@ -35,7 +35,7 @@ class IngredientsController extends Controller
         ]);
 
         $currentUser->ingredients()->create($data);
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
     public function show(Ingredient $ingredient)
@@ -61,13 +61,13 @@ class IngredientsController extends Controller
 
         $ingredient->update($data);
 
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 
     public function delete(Ingredient $ingredient)
     {
         $currentUser = \auth()->user();
         Ingredient::find($ingredient->id)->delete();
-        return \redirect('/profile/' . $currentUser->id);
+        return \redirect('/profiles/' . $currentUser->id);
     }
 }

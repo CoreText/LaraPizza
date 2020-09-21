@@ -21,7 +21,7 @@
 
                         <div class="mb-4 alert alert-success" role="alert">
                             {{ __('You are logged in!') }} as
-                            <a class="btn-link" href="/profile/{{ $user->id }}">
+                            <a class="btn-link" href="/profiles/{{ $user->id }}">
                                 <strong>{{ $user->profile->username ?? $user->name }}</strong>
                             </a>
                         </div>
@@ -30,8 +30,8 @@
                             and <strong>{{ $user->ingredients->count() }}</strong> ingredients
                         </div>
 
-                        <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
-                        <a class="btn btn-lg btn-secondary" href="/ingredient/create">Add New Ingredient</a>
+                        <a class="btn btn-lg btn-primary" href="/pizzas/create">Add New Pizza</a>
+                        <a class="btn btn-lg btn-secondary" href="/ingredients/create">Add New Ingredient</a>
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
             <p>
             <strong>
                 @if($pizza->total_price === "0.00")
-                    No ingredient found. <a class="btn-link" href="/ingredient/create">Create some</a>
+                    No ingredient found. <a class="btn-link" href="/ingredients/create">Create some</a>
                 @else
                     Price: <span class="special-price">{{ $pizza->total_price }}</span> (EUR)
                 @endif
@@ -68,8 +68,8 @@
                 <a class="btn btn-lg btn-primary mr-auto" href="#">Bake The Pizza!</a>
                 {{--
                 @can('update', $user->profile)
-                    <a class="btn btn-lg btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Edit</a>
-                    <a class="btn btn-lg btn-danger" href="/pizza/{{ $pizza->id }}/delete">Delete</a>
+                    <a class="btn btn-lg btn-secondary" href="/pizzas/{{ $pizza->id }}/edit">Edit</a>
+                    <a class="btn btn-lg btn-danger" href="/pizzas/{{ $pizza->id }}/delete">Delete</a>
                 @endcan
                 --}}
             </footer>

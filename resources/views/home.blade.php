@@ -25,7 +25,7 @@
                             and ... ingredients
                         </div>
 
-                        <a class="btn btn-lg btn-primary" href="/pizza/create">Add New Pizza</a>
+                        <a class="btn btn-lg btn-primary" href="/pizzas/create">Add New Pizza</a>
                         <a class="btn btn-lg btn-secondary " href="#">Add New Ingredient</a>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
         @foreach($user->pizzas as $pizza)
             <article class="col col-sm-4 p-0 mt-4">
                 <div class="card card-item">
-                    <a href="/pizza/{{ $pizza->id }}">
+                    <a href="/pizzas/{{ $pizza->id }}">
                         <img class="card-img-top" alt=""
                              src="https://doncarlone.com.br/site/wp-content/uploads/2017/06/dia-da-pizza.jpg">
                     </a>
@@ -48,8 +48,8 @@
                             <a class="btn btn-sm btn-primary mr-auto" href="#">Bake The Pizza!</a>
 
                             @can('update', $user->profile)
-                                <a class="btn btn-sm btn-secondary" href="/pizza/{{ $pizza->id }}/edit">Update</a>
-                                <a class="btn btn-sm btn-danger" href="/pizza/{{ $pizza->id }}/delete">Delete</a>
+                                <a class="btn btn-sm btn-secondary" href="/pizzas/{{ $pizza->id }}/edit">Update</a>
+                                <a class="btn btn-sm btn-danger" href="/pizzas/{{ $pizza->id }}/delete">Delete</a>
                             @endcan
                         </div>
                     </div>
