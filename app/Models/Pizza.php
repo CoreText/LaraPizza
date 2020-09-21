@@ -17,4 +17,9 @@ class Pizza extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getTotalPriceAttribute(string $price)
+    {
+        return number_format(((float)$price * 15) / 10, 2);
+    }
+
 }
