@@ -20,10 +20,13 @@ Route::get('/', [App\Http\Controllers\PizzasController::class, 'index']);
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Pages
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Profiles
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 
-// Pizza
+// Pizzas
 Route::post('/pizza', [App\Http\Controllers\PizzasController::class, 'store']);
 Route::get('/pizza/create', [App\Http\Controllers\PizzasController::class, 'create']);
 Route::get('/pizza/{pizza}/edit', [App\Http\Controllers\PizzasController::class, 'edit'])->name('pizza.edit');
