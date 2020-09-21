@@ -58,7 +58,7 @@ class IngredientsController extends Controller
         $currentUser = \auth()->user();
 
         $data = \request()->validate([
-            'name' => 'required|unique:ingredients',
+            'name' => 'required',
             'price' => 'required',
         ]);
 

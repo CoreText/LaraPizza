@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ingredient;
-use App\Models\Pizza;
-use App\Models\User;
+use App\Models\ {
+    Ingredient,
+    Pizza,
+    User
+};
+
 use Illuminate\Support\Facades\DB;
 
 class PizzasController extends Controller
